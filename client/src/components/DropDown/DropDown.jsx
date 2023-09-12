@@ -19,11 +19,7 @@ const DropDown = ({ options }) => {
         className="dropdown-button"
       >
         {selectedOption || "Choose A Map"}
-        {!isOpen ? (
-          <AiOutlineCaretDown className="h-8" />
-        ) : (
-          <AiOutlineCaretUp className="h-8" />
-        )}
+        {!isOpen ? <AiOutlineCaretDown /> : <AiOutlineCaretUp />}
       </button>
 
       {isOpen && (
@@ -34,8 +30,8 @@ const DropDown = ({ options }) => {
               className="dropdown-option"
               onClick={() => handleOptionClick(option)}
             >
-              <h3 className="font-bold">{option.label}</h3>
-              <h3>{option.Amount}</h3>
+              <h3>{option.label}</h3>
+              {/* <h3>{option.Amount}</h3> */}
             </div>
           ))}
         </div>

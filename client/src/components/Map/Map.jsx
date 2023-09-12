@@ -1,11 +1,12 @@
 import Target from "../Target/Target";
+import "./Map.css";
 
 const Map = ({ mapImage, targets, onTargetClick }) => {
   const mapWidth = 800;
   const mapHeight = 600;
 
   return (
-    <div className="relative">
+    <div className="map-container">
       {mapImage && <img src={mapImage} alt="Map" />}
       {mapImage &&
         targets.map((target, index) => {
@@ -15,11 +16,10 @@ const Map = ({ mapImage, targets, onTargetClick }) => {
           return (
             <div
               key={index}
-              className="target-tag"
               style={{
                 position: "absolute",
-                left: `${relativeX}%`, // Use relative coordinates
-                top: `${relativeY}%`, // Use relative coordinates
+                left: target.x,
+                top: target.y,
               }}
               onClick={() => onTargetClick(target)}
             >
