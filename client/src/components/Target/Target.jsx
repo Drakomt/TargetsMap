@@ -3,7 +3,7 @@ import React from "react"; // Import React
 
 const Target = ({ x, y, name, onClick }) => {
   const handleClick = (event) => {
-    event.stopPropagation(); // Stop event propagation
+    event.stopPropagation();
     onClick(name);
   };
 
@@ -15,10 +15,17 @@ const Target = ({ x, y, name, onClick }) => {
         left: x,
         top: y,
         cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "50%", // Add round border
+        border: "2px solid black", // Add a black border
+        width: "32px", // Adjust the size as needed
+        height: "32px", // Adjust the size as needed
       }}
       onClick={handleClick}
     >
-      <TfiTarget>{name}</TfiTarget>
+      <TfiTarget style={{ color: "red" }}>{name}</TfiTarget>
     </div>
   );
 };
