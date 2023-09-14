@@ -25,7 +25,7 @@ const Target = ({ x, y, name, onClick }) => {
       }}
       onClick={handleClick}
     >
-      <TfiTarget style={{ color: "red" }}>{name}</TfiTarget>
+      <TfiTarget style={{ color: "black" }}>{name}</TfiTarget>
     </div>
   );
 };

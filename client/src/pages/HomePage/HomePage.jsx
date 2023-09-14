@@ -2,6 +2,8 @@ import { useState } from "react";
 import DropDown from "../../components/DropDown/DropDown";
 import Map from "../../components/Map/Map";
 import "./HomePage.css";
+import NavBar from "../../components/NavBar/NavBar";
+import SelectedTarget from "../../components/SelectedTarget/SelectedTarget";
 
 const HomePage = () => {
   const [imageSource, setImageSource] = useState("");
@@ -52,18 +54,68 @@ const HomePage = () => {
   ];
 
   const targets = [
-    { x: 100, y: 200, name: "Target 1", map: "Favela" },
-    { x: 250, y: 300, name: "Target 2", map: "Favela" },
-    { x: 300, y: 100, name: "Target 3", map: "Afghan" },
-    { x: 200, y: 250, name: "Target 4", map: "Afghan" },
-    { x: 60, y: 50, name: "Target 5", map: "Derail" },
-    { x: 150, y: 10, name: "Target 6", map: "Derail" },
-    { x: 300, y: 20, name: "Target 7", map: "Highrise" },
-    { x: 170, y: 260, name: "Target 8", map: "Highrise" },
+    {
+      x: 100,
+      y: 200,
+      name: "Target 1",
+      map: "Favela",
+      amount: 2,
+      type: "Soldier",
+    },
+    {
+      x: 250,
+      y: 300,
+      name: "Target 2",
+      map: "Favela",
+      amount: 3,
+      type: "Vehicle",
+    },
+    {
+      x: 300,
+      y: 100,
+      name: "Target 3",
+      map: "Afghan",
+      amount: 4,
+      type: "Soldier",
+    },
+    {
+      x: 200,
+      y: 250,
+      name: "Target 4",
+      map: "Afghan",
+      amount: 1,
+      type: "AT Squad",
+    },
+    {
+      x: 60,
+      y: 50,
+      name: "Target 5",
+      map: "Derail",
+      amount: 4,
+      type: "Soldier",
+    },
+    { x: 150, y: 10, name: "Target 6", map: "Derail", amount: 2, type: "BMP" },
+    {
+      x: 300,
+      y: 20,
+      name: "Target 7",
+      map: "Highrise",
+      amount: 6,
+      type: "Soldier",
+    },
+    {
+      x: 170,
+      y: 260,
+      name: "Target 8",
+      map: "Highrise",
+      amount: 1,
+      type: "Tank",
+    },
   ];
 
   const handleTargetClick = (name) => {
-    setSelectedTarget(name);
+    const clickedTarget = targets.find((target) => target.name === name);
+    setSelectedTarget(clickedTarget);
     console.log("name: " + name);
   };
 
@@ -72,20 +124,23 @@ const HomePage = () => {
   );
 
   return (
-    <div className="container">
-      <DropDown options={options} />
-      <Map
-        mapImage={imageSource}
-        targets={filteredTargets}
-        onTargetClick={handleTargetClick}
-      />
-      {selectedTarget && (
-        <div>
-          <h2>Selected Target:</h2>
-          <p>{selectedTarget}</p>
-        </div>
-      )}
-    </div>
+    <>
+      <NavBar />
+      <div className="container">
+        <DropDown options={options} />
+        <Map
+          mapImage={imageSource}
+          targets={filteredTargets}
+          onTargetClick={handleTargetClick}
+        />
+        {selectedTarget && (
+          <div>
+            <h2>Selected Target:</h2>
+            <SelectedTarget target={selectedTarget} />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
