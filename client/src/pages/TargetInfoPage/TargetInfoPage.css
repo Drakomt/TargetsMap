@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #00b4db, #0083b0);
+}
+  
+.target-info-box {
+display: flex;
+background-color: #00b4db;
+border: 1px solid #ccc;
+border-radius: 8px;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+padding: 16px;
+}
+
+.target-image {
+max-width: 200px;
+height: auto;
+margin-right: 16px;
+}
+
+.target-details {
+flex: 1;
+}
+
+.target-name {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 8px;
+}
+
+.target-description {
+font-size: 16px;
+margin-bottom: 16px;
+}
+
+.target-stats {
+display: flex;
+flex-wrap: wrap;
+}
+
+.target-amount,
+.target-type {
+font-size: 16px;
+margin-right: 16px; /* Spacing between stats */
+}
+  

@@ -4,6 +4,7 @@ import Map from "../../components/Map/Map";
 import "./HomePage.css";
 import NavBar from "../../components/NavBar/NavBar";
 import SelectedTarget from "../../components/SelectedTarget/SelectedTarget";
+import { data } from "../../../data";
 
 const HomePage = () => {
   const [imageSource, setImageSource] = useState("");
@@ -53,73 +54,79 @@ const HomePage = () => {
     },
   ];
 
-  const targets = [
-    {
-      x: 100,
-      y: 200,
-      name: "Target 1",
-      map: "Favela",
-      amount: 2,
-      type: "Soldier",
-    },
-    {
-      x: 250,
-      y: 300,
-      name: "Target 2",
-      map: "Favela",
-      amount: 3,
-      type: "Vehicle",
-    },
-    {
-      x: 300,
-      y: 100,
-      name: "Target 3",
-      map: "Afghan",
-      amount: 4,
-      type: "Soldier",
-    },
-    {
-      x: 200,
-      y: 250,
-      name: "Target 4",
-      map: "Afghan",
-      amount: 1,
-      type: "AT Squad",
-    },
-    {
-      x: 60,
-      y: 50,
-      name: "Target 5",
-      map: "Derail",
-      amount: 4,
-      type: "Soldier",
-    },
-    { x: 150, y: 10, name: "Target 6", map: "Derail", amount: 2, type: "BMP" },
-    {
-      x: 300,
-      y: 20,
-      name: "Target 7",
-      map: "Highrise",
-      amount: 6,
-      type: "Soldier",
-    },
-    {
-      x: 170,
-      y: 260,
-      name: "Target 8",
-      map: "Highrise",
-      amount: 1,
-      type: "Tank",
-    },
-  ];
+  // const targets = [
+  //   {
+  //     _id: 1,
+  //     x: 100,
+  //     y: 200,
+  //     name: "Target 1",
+  //     map: "Favela",
+  //     amount: 2,
+  //     type: "Soldier",
+  //   },
+  //   {
+  //     _id: 2,
+  //     x: 250,
+  //     y: 300,
+  //     name: "Target 2",
+  //     map: "Favela",
+  //     amount: 3,
+  //     type: "Vehicle",
+  //   },
+  //   {
+  //     _id: 3,
+  //     x: 300,
+  //     y: 100,
+  //     name: "Target 3",
+  //     map: "Afghan",
+  //     amount: 4,
+  //     type: "Soldier",
+  //   },
+  //   {
+  //     _id: 4,
+  //     x: 200,
+  //     y: 250,
+  //     name: "Target 4",
+  //     map: "Afghan",
+  //     amount: 1,
+  //     type: "AT Squad",
+  //   },
+  //   {
+  //     _id: 5,
+  //     x: 60,
+  //     y: 50,
+  //     name: "Target 5",
+  //     map: "Derail",
+  //     amount: 4,
+  //     type: "Soldier",
+  //   },
+  //   { x: 150, y: 10, name: "Target 6", map: "Derail", amount: 2, type: "BMP" },
+  //   {
+  //     _id: 6,
+  //     x: 300,
+  //     y: 20,
+  //     name: "Target 7",
+  //     map: "Highrise",
+  //     amount: 6,
+  //     type: "Soldier",
+  //   },
+  //   {
+  //     _id: 7,
+  //     x: 170,
+  //     y: 260,
+  //     name: "Target 8",
+  //     map: "Highrise",
+  //     amount: 1,
+  //     type: "Tank",
+  //   },
+  // ];
 
   const handleTargetClick = (name) => {
-    const clickedTarget = targets.find((target) => target.name === name);
+    const clickedTarget = data.targets.find((target) => target.name === name);
     setSelectedTarget(clickedTarget);
-    console.log("name: " + name);
   };
 
-  const filteredTargets = targets.filter(
+  const filteredTargets = data.targets.filter(
     (target) => target.map === selectedMap
   );
 
